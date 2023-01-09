@@ -1,6 +1,6 @@
 ## Express Typescript Quicks Server
 
-### Hot to run
+### How to run
 
 - `npm install`
 - `npm run ts:watch`
