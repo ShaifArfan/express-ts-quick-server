@@ -2,7 +2,7 @@ import express from "express";
 import allRoutes from "./routes";
 import morgan from "morgan";
 import cors from "cors";
-import chalk from "chalk";
+import { portInUseErrorLogs } from "./utils/showErrorLogs";
 
 // dotenv
 import * as dotenv from "dotenv";
@@ -26,30 +26,7 @@ server
   })
   .on("error", (error: any) => {
     if (error.code === "EADDRINUSE") {
-      console.log(chalk.red(`Port ${PORT} is already in use`));
-      if (process.platform === "win32") {
-        console.log(
-          chalk.red(
-            `Try ➤ "SET PORT=${
-              PORT + 1
-            } && npm run dev" to run the server on a different port`
-          )
-        );
-      } else if (
-        process.platform === "linux" ||
-        process.platform === "darwin"
-      ) {
-        console.log(
-          chalk.yellow(
-            `Try ➤ "PORT=${
-              PORT + 1
-            } npm run dev" to run the server on a different port`
-          )
-        );
-      } else {
-        console.log("Try running the server on a different port");
-      }
+      portInUseErrorLogs(PORT);
+      process.exit(1);
     }
-    console.log("Exiting process...");
-    process.exit(1);
   });
