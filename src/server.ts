@@ -1,7 +1,6 @@
 import express from "express";
 import allRoutes from "./routes";
 import morgan from "morgan";
-import cors from "cors";
 import { portInUseErrorLogs } from "./utils/showErrorLogs";
 
 // dotenv
@@ -14,7 +13,6 @@ const server = express();
 
 // middleware
 server.use(morgan("tiny"));
-server.use(cors());
 server.use(express.json());
 
 // routes
