@@ -1,8 +1,8 @@
-import chalk from "chalk";
+import chalk from 'chalk';
 
 export const portInUseErrorLogs = (port: number) => {
   console.log(chalk.red(`Port ${port} is already in use`));
-  if (process.platform === "win32") {
+  if (process.platform === 'win32') {
     console.log(
       chalk.red(
         `Try ➤ "SET PORT=${
@@ -10,7 +10,7 @@ export const portInUseErrorLogs = (port: number) => {
         } && npm run dev" to run the server on a different port`
       )
     );
-  } else if (process.platform === "linux" || process.platform === "darwin") {
+  } else if (process.platform === 'linux' || process.platform === 'darwin') {
     console.log(
       chalk.yellow(
         `Try ➤ "PORT=${
@@ -19,8 +19,8 @@ export const portInUseErrorLogs = (port: number) => {
       )
     );
   } else {
-    console.log("Try running the server on a different port");
+    console.log('Try running the server on a different port');
   }
 
-  console.log("Exiting process...");
+  console.log('Exiting process...');
 };
